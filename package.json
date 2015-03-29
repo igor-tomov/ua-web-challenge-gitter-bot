@@ -1,13 +1,13 @@
 {
   "name": "ua-web-challenge-gitter-bot",
   "version": "0.0.1",
-  "description": "This is task impelementation for UA Web challenge",
+  "description": "This is task impelementation for UA Web challenge 2015",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-      "type": "git",
+    "type": "git",
     "url": "git://github.com/stepennwolf/ua-web-challenge-gitter-bot"
   },
   "keywords": [
@@ -22,8 +22,13 @@
     "url": "https://github.com/stepennwolf/ua-web-challenge-gitter-bot/issues"
   },
   "homepage": "https://github.com/stepennwolf/ua-web-challenge-gitter-bot",
-
   "dependencies": {
-    "node-gitter": "1.2.8"
+    "eventemitter3": "^0.1.6",
+    "node-gitter": "1.2.8",
+    "promise-es6": "^0.1.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.1"
   }
 }
