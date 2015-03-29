@@ -1,7 +1,7 @@
 Gitter-bot
 ==========
 
-This is task implementation for UA Web challenge
+This is task implementation for UA Web challenge 2015
 
 ## Usage
 
