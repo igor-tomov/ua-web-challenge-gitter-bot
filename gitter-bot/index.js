@@ -10,7 +10,7 @@ var room  = args[0],
 
 // instantiate necessary objects
 var client = new GitterClient( token );
-var parser = new MessageParser( { messagePrefix: config.messagePrefix } );
+var parser = new MessageParser( config.parser );
 
 // pass incoming messages through expression parser
 client.on( GitterClient.POST_MESSAGE_EVENT, function( payload ){

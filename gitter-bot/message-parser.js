@@ -1,4 +1,5 @@
-var extend = require( "util")._extend;
+var extend = require( "util" )._extend;
+var providerPath = './calc-providers/';
 
 /**
  * Provides parsing and evaluation of specific expressions from input messages
@@ -8,13 +9,15 @@ var extend = require( "util")._extend;
  */
 function MessageParser( options ){
     this.options = extend( this.DEFAULT_OPTIONS, options );
+    this.calcProvider = new this._factoryCalcProvider( this.options.calcProvider );
 }
 
 MessageParser.prototype = {
     constructor: MessageParser,
 
     DEFAULT_OPTIONS: {
-        prefixMessage: 'calc'
+        messagePrefix: 'calc',
+        calcProvider: 'eval'
     },
 
     ALLOWED_CHAR_SET: /^[\d\./*\-+\(\)\s]+$/,
@@ -41,13 +44,9 @@ MessageParser.prototype = {
         return result;
     },
 
-    _eval: function( expr ){
-        try{
-            return eval( expr );
-        }catch ( e ){
-            console.warn( "MessageParser._eval: ", e );
-            return this.INVALID_MSG;
-        }
+    _factoryCalcProvider: function( name ){
+        var provider = require( providerPath + name + ".js" );
+        return new provider;
     },
 
     feed: function( value ){
@@ -61,7 +60,7 @@ MessageParser.prototype = {
             return this.INVALID_MSG;
         }
 
-        return this._eval( expr ).toString();
+        return this.calcProvider.calculate( expr );//this._eval( expr ).toString();
     }
 };
 
